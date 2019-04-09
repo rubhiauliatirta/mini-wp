@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Rock+Salt');
+*{
+    margin: 0;
+    padding: 0;
+}
+.rock-salt{
+    font-family: 'Rock Salt', sans-serif;
+}
+html{
+    padding: 0;
+    margin: 0
+}
+body{
+ 
+    height: 100vh;
+    background-color: #850000;
+    
+}
+.test{
+    width: 500 px;
+    height: 100%;
+    margin: 10px;
+    background-color: antiquewhite;
+}
+
+#sidebar{
+    /* position: absolute; */
+    position: fixed;
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    width: 300px;
+    background: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+#sidebar{
+    height: 100%;
+    color: whitesmoke
+}
+#profile img{
+    width: 60px;
+    height: 60px;
+}
+
+#sidebar a{
+    margin: 10px;
+    text-decoration: none;
+}
+#sidebar a:hover{
+    color: white;
+    font-weight: bold;
+    color: #850000;
+}
+/* #mynavbar{
+    position: absolute;
+} */
+
+/* add article modal */
+
+#add-article-body-input{
+    height: 400px;
+}
