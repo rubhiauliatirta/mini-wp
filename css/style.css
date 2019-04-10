@@ -18,7 +18,7 @@ body{
     
 }
 .test{
-    width: 500 px;
+    width: 500px;
     height: 100%;
     margin: 10px;
     background-color: antiquewhite;
@@ -29,7 +29,6 @@ body{
     position: fixed;
     z-index: 1;
     font-family: 'Open Sans', sans-serif;
-    width: 300px;
     background: black;
     overflow-x: hidden;
     transition: 0.5s;
@@ -46,6 +45,7 @@ body{
 #sidebar a{
     margin: 10px;
     text-decoration: none;
+    
 }
 #sidebar a:hover{
     color: white;
@@ -61,3 +61,22 @@ body{
 #add-article-body-input{
     height: 400px;
 }
+
+#article-view{
+    background-color: whitesmoke
+}
+
+.glow {
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
