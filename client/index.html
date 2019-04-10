@@ -81,8 +81,8 @@
               <h5>{{article.title}}</h5>
               <div class="d-flex flex-row">
                 <b-button class="mr-2" v-b-toggle="'accordion-'+index"><i class="fa fa-eye"></i></b-button>
-                <b-button class="mr-2" @click="setEditId(article.id,article)" v-b-modal.mymodal><i class="fa fa-edit"></i></b-button>
-                <b-button class="mr-2" v-b-modal.modal-delete-confirmation @click="setDeleteId(article.id)"><i class="fa fa-trash-alt"></i></b-button>
+                <b-button class="mr-2" @click="setEditId(article._id,article)" v-b-modal.mymodal><i class="fa fa-edit"></i></b-button>
+                <b-button class="mr-2" v-b-modal.modal-delete-confirmation @click="setDeleteId(article._id)"><i class="fa fa-trash-alt"></i></b-button>
               </div>
             </b-card-header>
             <b-collapse v-bind:id="'accordion-'+index" accordion="my-accordion" role="tabpanel">
@@ -105,8 +105,8 @@
               <h5>{{article.title}}</h5>
               <div class="d-flex flex-row">
                 <b-button class="mr-2" v-b-toggle="'accordion-'+index"><i class="fa fa-eye"></i></b-button>
-                <b-button @click="setEditId(article.id,article)" v-b-modal.mymodal class="mr-2"><i class="fa fa-edit"></i></b-button>
-                <b-button v-b-modal.modal-delete-confirmation @click="setDeleteId(article.id)" class="mr-2"><i class="fa fa-trash-alt"></i></b-button>
+                <b-button @click="setEditId(article._id,article)" v-b-modal.mymodal class="mr-2"><i class="fa fa-edit"></i></b-button>
+                <b-button v-b-modal.modal-delete-confirmation @click="setDeleteId(article._id)" class="mr-2"><i class="fa fa-trash-alt"></i></b-button>
               </div>
             </b-card-header>
             <b-collapse v-bind:id="'accordion-'+index" accordion="my-accordion" role="tabpanel">

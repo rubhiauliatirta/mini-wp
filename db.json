@@ -1,0 +1,92 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Judul article 1",
+      "content": "<h2>Test Heading<br></h2><p><b>\nLorem ipsum</b> dolor sit amet, <u>consectetur</u> adipiscing elit. Sed fringilla \net lacus in pharetra. Vivamus laoreet, ex facilisis placerat pulvinar, \nipsum diam dictum erat, vel euismod mauris turpis sit amet leo. Mauris \nut sem quis nunc egestas rhoncus. Curabitur tempus lobortis odio sed \nscelerisque. <i>Donec non tortor lectus</i>. Nunc eu erat eu magna luctus \nblandit. Morbi ut elit nec sapien iaculis gravida a ut nunc. Aliquam \ninterdum nunc mauris, ac mattis nibh fringilla vel. Fusce ac mattis \nlorem. Vestibulum vel lacinia mi. In luctus dolor diam, sed semper elit \nimperdiet quis. Duis pharetra nisi vel lobortis efficitur. Nam iaculis \nfeugiat nulla, eget ultrices magna fringilla id. Cras interdum a sapien \nut elementum. Aenean porta purus sit amet augue eleifend porttitor.\n</p>\n<p>\nFusce nec orci at libero tempor dictum ut at eros. <b>Vestibulum</b> imperdiet \nsagittis dolor, non elementum lacus molestie ac. Nullam maximus id ipsum\n sed suscipit. Nullam gravida pretium nisl, quis porttitor libero \nimperdiet id. Proin finibus, dui eget ornare iaculis, nisi tellus cursus\n arcu, non pulvinar massa dolor ut nisl. Maecenas eleifend rutrum \nornare. Nulla ac turpis orci. Donec rhoncus tincidunt tortor, eu \nultrices est aliquet quis. Quisque odio orci, efficitur sodales molestie\n in, imperdiet in purus. <b>Morbi dui augue,</b> aliquet bibendum ullamcorper \nnec, suscipit in felis. Phasellus porttitor velit sit amet vulputate \niaculis. Suspendisse potenti.\n</p>\n<p>\nPellentesque placerat semper iaculis. Curabitur ut urna tortor. \nVestibulum est lacus, lacinia sit amet tempor nec, placerat sit amet \ndolor. Cras euismod, ante id porttitor elementum, magna odio suscipit \nnulla, vel iaculis massa urna vitae lorem. Duis quam ipsum, tempus vel \nvestibulum eu, placerat vitae felis. Cras congue euismod lacus mattis \ninterdum. Phasellus imperdiet nisl et tortor maximus malesuada. Praesent\n sollicitudin aliquet ligula, non mollis dui laoreet at. Donec posuere \nnulla ut quam vehicula, sed porta urna consequat. Pellentesque habitant \nmorbi tristique senectus et netus et malesuada fames ac turpis egestas. \nMaecenas euismod egestas lacus id suscipit.\n</p>\n<p>\nNulla facilisi. Aliquam dapibus cursus congue. Mauris vel metus \nplacerat, blandit libero ut, condimentum erat. Praesent mollis, mauris \neget laoreet viverra, orci eros malesuada lorem, sed tempus neque augue \nnec enim. Maecenas nec tincidunt elit. Pellentesque eleifend lacus a \nnulla eleifend, vitae semper metus lobortis. Orci varius natoque \npenatibus et magnis dis parturient montes, nascetur ridiculus mus. \nPhasellus eget pharetra est. Quisque vestibulum pulvinar sollicitudin. \nSed faucibus, ipsum quis egestas lobortis, erat tortor bibendum nunc, \nvel feugiat odio nunc sed dolor. Mauris vestibulum mauris at molestie \nluctus. Curabitur in risus vel velit ultrices blandit.\n</p>",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "isPublished": true
+    },
+    {
+      "id": 2,
+      "title": "Judul article 2",
+      "content": "<h2>Test Heading<br></h2><p><b>\nLorem ipsum</b> dolor sit amet, <u>consectetur</u> adipiscing elit. Sed fringilla \net lacus in pharetra. Vivamus laoreet, ex facilisis placerat pulvinar, \nipsum diam dictum erat, vel euismod mauris turpis sit amet leo. Mauris \nut sem quis nunc egestas rhoncus. Curabitur tempus lobortis odio sed \nscelerisque. <i>Donec non tortor lectus</i>. Nunc eu erat eu magna luctus \nblandit. Morbi ut elit nec sapien iaculis gravida a ut nunc. Aliquam \ninterdum nunc mauris, ac mattis nibh fringilla vel. Fusce ac mattis \nlorem. Vestibulum vel lacinia mi. In luctus dolor diam, sed semper elit \nimperdiet quis. Duis pharetra nisi vel lobortis efficitur. Nam iaculis \nfeugiat nulla, eget ultrices magna fringilla id. Cras interdum a sapien \nut elementum. Aenean porta purus sit amet augue eleifend porttitor.\n</p>\n<p>\nFusce nec orci at libero tempor dictum ut at eros. <b>Vestibulum</b> imperdiet \nsagittis dolor, non elementum lacus molestie ac. Nullam maximus id ipsum\n sed suscipit. Nullam gravida pretium nisl, quis porttitor libero \nimperdiet id. Proin finibus, dui eget ornare iaculis, nisi tellus cursus\n arcu, non pulvinar massa dolor ut nisl. Maecenas eleifend rutrum \nornare. Nulla ac turpis orci. Donec rhoncus tincidunt tortor, eu \nultrices est aliquet quis. Quisque odio orci, efficitur sodales molestie\n in, imperdiet in purus. <b>Morbi dui augue,</b> aliquet bibendum ullamcorper \nnec, suscipit in felis. Phasellus porttitor velit sit amet vulputate \niaculis. Suspendisse potenti.\n</p>\n<p>\nPellentesque placerat semper iaculis. Curabitur ut urna tortor. \nVestibulum est lacus, lacinia sit amet tempor nec, placerat sit amet \ndolor. Cras euismod, ante id porttitor elementum, magna odio suscipit \nnulla, vel iaculis massa urna vitae lorem. Duis quam ipsum, tempus vel \nvestibulum eu, placerat vitae felis. Cras congue euismod lacus mattis \ninterdum. Phasellus imperdiet nisl et tortor maximus malesuada. Praesent\n sollicitudin aliquet ligula, non mollis dui laoreet at. Donec posuere \nnulla ut quam vehicula, sed porta urna consequat. Pellentesque habitant \nmorbi tristique senectus et netus et malesuada fames ac turpis egestas. \nMaecenas euismod egestas lacus id suscipit.\n</p>\n<p>\nNulla facilisi. Aliquam dapibus cursus congue. Mauris vel metus \nplacerat, blandit libero ut, condimentum erat. Praesent mollis, mauris \neget laoreet viverra, orci eros malesuada lorem, sed tempus neque augue \nnec enim. Maecenas nec tincidunt elit. Pellentesque eleifend lacus a \nnulla eleifend, vitae semper metus lobortis. Orci varius natoque \npenatibus et magnis dis parturient montes, nascetur ridiculus mus. \nPhasellus eget pharetra est. Quisque vestibulum pulvinar sollicitudin. \nSed faucibus, ipsum quis egestas lobortis, erat tortor bibendum nunc, \nvel feugiat odio nunc sed dolor. Mauris vestibulum mauris at molestie \nluctus. Curabitur in risus vel velit ultrices blandit.\n</p>",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "isPublished": false
+    },
+    {
+      "id": 3,
+      "title": "Judul article 3",
+      "content": "<h2>Test Heading<br></h2><p><b>\nLorem ipsum</b> dolor sit amet, <u>consectetur</u> adipiscing elit. Sed fringilla \net lacus in pharetra. Vivamus laoreet, ex facilisis placerat pulvinar, \nipsum diam dictum erat, vel euismod mauris turpis sit amet leo. Mauris \nut sem quis nunc egestas rhoncus. Curabitur tempus lobortis odio sed \nscelerisque. <i>Donec non tortor lectus</i>. Nunc eu erat eu magna luctus \nblandit. Morbi ut elit nec sapien iaculis gravida a ut nunc. Aliquam \ninterdum nunc mauris, ac mattis nibh fringilla vel. Fusce ac mattis \nlorem. Vestibulum vel lacinia mi. In luctus dolor diam, sed semper elit \nimperdiet quis. Duis pharetra nisi vel lobortis efficitur. Nam iaculis \nfeugiat nulla, eget ultrices magna fringilla id. Cras interdum a sapien \nut elementum. Aenean porta purus sit amet augue eleifend porttitor.\n</p>\n<p>\nFusce nec orci at libero tempor dictum ut at eros. <b>Vestibulum</b> imperdiet \nsagittis dolor, non elementum lacus molestie ac. Nullam maximus id ipsum\n sed suscipit. Nullam gravida pretium nisl, quis porttitor libero \nimperdiet id. Proin finibus, dui eget ornare iaculis, nisi tellus cursus\n arcu, non pulvinar massa dolor ut nisl. Maecenas eleifend rutrum \nornare. Nulla ac turpis orci. Donec rhoncus tincidunt tortor, eu \nultrices est aliquet quis. Quisque odio orci, efficitur sodales molestie\n in, imperdiet in purus. <b>Morbi dui augue,</b> aliquet bibendum ullamcorper \nnec, suscipit in felis. Phasellus porttitor velit sit amet vulputate \niaculis. Suspendisse potenti.\n</p>\n<p>\nPellentesque placerat semper iaculis. Curabitur ut urna tortor. \nVestibulum est lacus, lacinia sit amet tempor nec, placerat sit amet \ndolor. Cras euismod, ante id porttitor elementum, magna odio suscipit \nnulla, vel iaculis massa urna vitae lorem. Duis quam ipsum, tempus vel \nvestibulum eu, placerat vitae felis. Cras congue euismod lacus mattis \ninterdum. Phasellus imperdiet nisl et tortor maximus malesuada. Praesent\n sollicitudin aliquet ligula, non mollis dui laoreet at. Donec posuere \nnulla ut quam vehicula, sed porta urna consequat. Pellentesque habitant \nmorbi tristique senectus et netus et malesuada fames ac turpis egestas. \nMaecenas euismod egestas lacus id suscipit.\n</p>\n<p>\nNulla facilisi. Aliquam dapibus cursus congue. Mauris vel metus \nplacerat, blandit libero ut, condimentum erat. Praesent mollis, mauris \neget laoreet viverra, orci eros malesuada lorem, sed tempus neque augue \nnec enim. Maecenas nec tincidunt elit. Pellentesque eleifend lacus a \nnulla eleifend, vitae semper metus lobortis. Orci varius natoque \npenatibus et magnis dis parturient montes, nascetur ridiculus mus. \nPhasellus eget pharetra est. Quisque vestibulum pulvinar sollicitudin. \nSed faucibus, ipsum quis egestas lobortis, erat tortor bibendum nunc, \nvel feugiat odio nunc sed dolor. Mauris vestibulum mauris at molestie \nluctus. Curabitur in risus vel velit ultrices blandit.\n</p>",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "isPublished": true
+    },
+    {
+      "id": 4,
+      "title": "Judul article 4",
+      "content": "<h2>Test Heading<br></h2><p><b>\nLorem ipsum</b> dolor sit amet, <u>consectetur</u> adipiscing elit. Sed fringilla \net lacus in pharetra. Vivamus laoreet, ex facilisis placerat pulvinar, \nipsum diam dictum erat, vel euismod mauris turpis sit amet leo. Mauris \nut sem quis nunc egestas rhoncus. Curabitur tempus lobortis odio sed \nscelerisque. <i>Donec non tortor lectus</i>. Nunc eu erat eu magna luctus \nblandit. Morbi ut elit nec sapien iaculis gravida a ut nunc. Aliquam \ninterdum nunc mauris, ac mattis nibh fringilla vel. Fusce ac mattis \nlorem. Vestibulum vel lacinia mi. In luctus dolor diam, sed semper elit \nimperdiet quis. Duis pharetra nisi vel lobortis efficitur. Nam iaculis \nfeugiat nulla, eget ultrices magna fringilla id. Cras interdum a sapien \nut elementum. Aenean porta purus sit amet augue eleifend porttitor.\n</p>\n<p>\nFusce nec orci at libero tempor dictum ut at eros. <b>Vestibulum</b> imperdiet \nsagittis dolor, non elementum lacus molestie ac. Nullam maximus id ipsum\n sed suscipit. Nullam gravida pretium nisl, quis porttitor libero \nimperdiet id. Proin finibus, dui eget ornare iaculis, nisi tellus cursus\n arcu, non pulvinar massa dolor ut nisl. Maecenas eleifend rutrum \nornare. Nulla ac turpis orci. Donec rhoncus tincidunt tortor, eu \nultrices est aliquet quis. Quisque odio orci, efficitur sodales molestie\n in, imperdiet in purus. <b>Morbi dui augue,</b> aliquet bibendum ullamcorper \nnec, suscipit in felis. Phasellus porttitor velit sit amet vulputate \niaculis. Suspendisse potenti.\n</p>\n<p>\nPellentesque placerat semper iaculis. Curabitur ut urna tortor. \nVestibulum est lacus, lacinia sit amet tempor nec, placerat sit amet \ndolor. Cras euismod, ante id porttitor elementum, magna odio suscipit \nnulla, vel iaculis massa urna vitae lorem. Duis quam ipsum, tempus vel \nvestibulum eu, placerat vitae felis. Cras congue euismod lacus mattis \ninterdum. Phasellus imperdiet nisl et tortor maximus malesuada. Praesent\n sollicitudin aliquet ligula, non mollis dui laoreet at. Donec posuere \nnulla ut quam vehicula, sed porta urna consequat. Pellentesque habitant \nmorbi tristique senectus et netus et malesuada fames ac turpis egestas. \nMaecenas euismod egestas lacus id suscipit.\n</p>\n<p>\nNulla facilisi. Aliquam dapibus cursus congue. Mauris vel metus \nplacerat, blandit libero ut, condimentum erat. Praesent mollis, mauris \neget laoreet viverra, orci eros malesuada lorem, sed tempus neque augue \nnec enim. Maecenas nec tincidunt elit. Pellentesque eleifend lacus a \nnulla eleifend, vitae semper metus lobortis. Orci varius natoque \npenatibus et magnis dis parturient montes, nascetur ridiculus mus. \nPhasellus eget pharetra est. Quisque vestibulum pulvinar sollicitudin. \nSed faucibus, ipsum quis egestas lobortis, erat tortor bibendum nunc, \nvel feugiat odio nunc sed dolor. Mauris vestibulum mauris at molestie \nluctus. Curabitur in risus vel velit ultrices blandit.\n</p>",
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3",
+        "tag4"
+      ],
+      "isPublished": false
+    },
+    {
+      "title": "Rubhi Aulia Tirta",
+      "content": "aakcnakdcnoljnvkshbvoaudyboijnvsg",
+      "tags": [
+        "eafae"
+      ],
+      "isPublished": true,
+      "id": 5
+    },
+    {
+      "title": "Rubhi si Naga Ngerih Edit ",
+      "content": "<div>asfjkshfalsijrbflkjnfLKJFNIbfaslkdnvzdirfbarskjnagarsgeragasrfsfcdzzcdzc</div><div>tambahan<br></div>",
+      "tags": [
+        "Naga",
+        "ngerih",
+        "sekali"
+      ],
+      "isPublished": false,
+      "id": 7
+    },
+    {
+      "title": "sabana itu enak",
+      "content": "yee aye ayae<br>",
+      "tags": [
+        ""
+      ],
+      "isPublished": false,
+      "id": 8
+    },
+    {
+      "title": "kjrnvlksjns",
+      "content": "<div>scajscnlsakjvnsavfacsdcs</div><div>fELJFNS;AKJ</div><div>ALCNAD<br></div>",
+      "tags": [
+        "sfdf",
+        "asfasf",
+        "asfasf"
+      ],
+      "isPublished": true,
+      "id": 9
+    }
+  ]
+}

@@ -14,8 +14,8 @@ const app = new Vue({
         this.divId = 1;
         axios.get(baseurl+'/articles', {})
           .then( (response)=> {
-            // console.log(response);
-            this.articles = response.data
+            console.log(response.data);
+            this.articles = response.data;
           })
           .catch(function (error) {
             // console.log(error);
@@ -45,6 +45,8 @@ const app = new Vue({
             })
             .catch(function (error) {
               // console.log(error);
+              console.log(error)
+         
             })
         }
     },
@@ -79,7 +81,7 @@ const app = new Vue({
             axios.patch(baseurl+'/articles/'+id, article)
             .then( (response)=> {
                 // console.log(response);
-                let clientArticle =  this.articles.find(art => art.id === id)
+                let clientArticle =  this.articles.find(art => art._id === id)
 
                 //update article data in client
                 for(let key in article){
@@ -103,7 +105,7 @@ const app = new Vue({
             })
             .catch(function (error) {           
                 console.log(error)
-                console.log(error.response.data.message);
+                //console.log(error.response.data.message);
             })
         },
         _getArticleData(isPublish){
@@ -113,9 +115,6 @@ const app = new Vue({
                 tags: this.modalTags.split(","),
                 isPublished: isPublish
             }
-        },
-        addData(id){
-            console.log("ini id", id)
         },
         closeModal(){
             this.modalTitle="";
@@ -144,7 +143,7 @@ const app = new Vue({
             event.preventDefault()
             axios.delete(baseurl+'/articles/'+this.modalDeleteId)
             .then( (response)=> {
-                this.articles = this.articles.filter(x=>x.id !== this.modalDeleteId)
+                this.articles = this.articles.filter(x=>x._id !== this.modalDeleteId)
                 this.modalDeleteId=false;
             })
             .catch(function (error) {
