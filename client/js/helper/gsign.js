@@ -20,9 +20,16 @@ function onSignIn(googleUser) {
   }
 
   function googleSignOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        app.isLogin = false
-    });
+      if(gapi.auth2){
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          
+            app.isLogin = false
+        });
+      }else{
+        
+          app.isLogin = false
+      }
+
   }
 

@@ -4,6 +4,29 @@ Vue.component('side-bar', {
         setParentView(id){
            
             this.$emit("set-view-id", id)
+        },
+        changeProfilePicture(){
+            this.$refs["upload"].click()
+        },
+        onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+              return;
+            
+              let data = new FormData();
+              data.append("image", files[0])
+              myaxios({
+                 method:'PATCH',
+                 url: "/users/pp",
+                 data,
+              })
+              .then(({data})=>{
+                 this.$emit("update-pp", data.imageUrl)
+              })
+              .catch(error=>{
+                handleAxiosError(error)
+              })
+              
         }
     },
     template: `
@@ -11,7 +34,12 @@ Vue.component('side-bar', {
         <div id="profile" class="d-flex flex-column p-4">
             <div class="d-flex flex-row">
                 <img :src="imgSrc" alt="pp.png" class="rounded-circle ">
-                <p class="ml-3 align-self-center">{{username}}</p>
+                <div class="ml-3 d-flex flex-column justify-content-center align-items-center">
+                    <p>{{username}}</p>
+                    <small> <a class="sm" @click.prevent="changeProfilePicture" id="upload_link">Change Profile Picture</a></small>        
+                </div>
+                <input ref="upload" type="file" @change="onFileChange" accept="image/*" style="display:none;">
+               
             </div>
             <small class="font-italic font-weight-bold mt-2">{{publishedArticle}}</small>
         </div>

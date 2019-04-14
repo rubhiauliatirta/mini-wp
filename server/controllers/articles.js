@@ -2,7 +2,7 @@ const {Article} = require("../models");
 
 class ArticleController{
 
-    static findAll(req,res){
+    static findAll(req,res,next){
         console.log(req.body.userIdFromAuth)
         let query = {
             userId: req.body.userIdFromAuth
@@ -22,7 +22,7 @@ class ArticleController{
         
         console.log(query)
 
-        Article.find(query).populate("User")
+        Article.find(query).populate("userId")
         .then(results=>{
             console.log(results)
             res.status(200).json(results)
@@ -31,7 +31,7 @@ class ArticleController{
             next(err)
         })
     }
-    static create(req,res){
+    static create(req,res,next){
         let data = {
             title : req.body.title,
             content : req.body.content,
@@ -49,7 +49,7 @@ class ArticleController{
             next(err)
         })
     }
-    static delete(req,res){
+    static delete(req,res, next){
         let id = req.params.articleId;
 
         Article.findByIdAndDelete(id)
@@ -62,7 +62,7 @@ class ArticleController{
             next(err)
         })
     }
-    static update(req,res){
+    static update(req,res, next){
         let updateVal = {}
         let id = req.params.articleId;
         req.body.title && (updateVal.title = req.body.title);

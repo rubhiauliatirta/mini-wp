@@ -53,6 +53,23 @@ class UserController{
     static getUser(req,res,next){
         res.status(200).json(req.body.user)
     }
+    static patch(req,res,next){
+        if(req.file){
+            let updateVal = {
+                imageUrl: req.file.cloudStoragePublicUrl
+            }
+            User.findByIdAndUpdate(req.params.userIdFromAuth,updateVal,{new:true})
+            .then(result=>{
+                res.status(200).json({imageUrl: result.imageUrl});
+            })
+            .catch(err=>{
+                next(err)
+            })
+        }else{
+            next(new Error("File is undefined"))
+        }
+
+    }
 }
 function composeReturn(token,result){
     console.log("masuk return")

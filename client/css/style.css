@@ -61,6 +61,9 @@ body{
     display: block;
     margin-bottom: 10px;
 }
+a{
+    cursor: pointer
+}
 /* #mynavbar{
     position: absolute;
 } */

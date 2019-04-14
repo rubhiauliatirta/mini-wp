@@ -1,6 +1,19 @@
 
+// const User = {
+//     template: '<div>{{ $route.params.username }}</div>',
+
+//   }
+  
+//   const router = new VueRouter({
+//     routes: [
+//       // dynamic segments start with a colon
+//       { path: '/user/:username/post/:slug', component: User }
+//     ]
+//   })
+  
 const app = new Vue({
     el:"#app",
+
     created(){
    
         this.sidebar.width = "300px";
@@ -135,10 +148,9 @@ const app = new Vue({
         },
         setWantLogin(){
             this.wantLogin = !this.wantLogin
+        },
+        updatePicture(src){
+            this.imgSrc = src
         }
     }
 })
-
-function modalValidation(title,text){
-
-}
