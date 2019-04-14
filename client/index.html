@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id" content="572484158514-mqcubhd0n0ddiqg8ddpr5bmoab4e5isj.apps.googleusercontent.com">
+    
+
   <title>Mini-Wp Rubhi</title>
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
@@ -13,143 +16,89 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link href="./css/vueWysiwyg.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
 </head>
-<!-- 
-    <i class="fas fa-search"></i> 
-    <i class="far fa-plus-square"></i>
-    <i class="fas fa-eye-slash"></i>
-    <i class="fas fa-newspaper"></i>
-    <i class="far fa-sticky-note"></i>
--->
 
 <body>
   <div id="app">
-    <aside id="sidebar" v-bind:style="{width: sidebar.width}" class="d-flex flex-column align-items-start">
-      <div id="profile" class="d-flex flex-column p-4">
-        <div class="d-flex flex-row">
-          <img src="./images/default.png" alt="pp.png" class="rounded-circle ">
-          <p class="ml-3 align-self-center">Rubhi Aulia Tirta</p>
-        </div>
-        <small class="font-italic font-weight-bold mt-2">{{publishedArticleLength}}</small>
-      </div>
-      <a class="btn mybutton" v-on:click="divId = 1"><i v-bind:class=" { 'glow': (divId == 1), 'fas':true, 'fa-eye':true, 'mr-2':true }"></i>View Articles</a>
-      <a class="btn mybutton" v-b-modal.mymodal><i class="far fa-plus-square mr-2"></i>Add Article</a>
-      <a class="btn mybutton" v-on:click="divId = 2"><i v-bind:class=" { 'glow': (divId == 2), 'fas':true, 'fa-newspaper':true, 'mr-2':true }"></i>My Articles</a>
-      <a class="btn mybutton" v-on:click="divId = 3"><i v-bind:class=" { 'glow': (divId == 3), 'fas':true, 'fa-sticky-note':true, 'mr-2':true }"></i>Draft</a>
-    </aside>
-    <div id="content" v-bind:style="{'margin-left': contentMargin, padding:'5px'}">
-      <b-navbar class="m-1" toggleable="lg" type="light" variant="light">
-        <b-navbar-brand href="#" class="rock-salt">RAT Mini-WP</b-navbar-brand>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="ml-auto align-items-end m-1">
-            <b-nav-form @submit.prevent="search">
-              <b-form-input size="sm" class="mr-sm-2" v-model="searchQuery" placeholder="Search"></b-form-input>
-              <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-            </b-nav-form>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-      <div id="articles" v-if="this.divId===1" class="mt-5">
-        <div v-for="(article, index) in articles">
-          <div id="article-view" class="m-4 p-4" v-if="article.isPublished">
-            <h1>{{article.title}}</h1>
-            <br>
-            <div v-html="article.content"></div>
-            <div id="article-tag" class="d-flex flex-row">
-              <b-badge variant="dark" class="mr-2" v-for="tag in article.tags">{{tag}}</b-badge>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="articles" v-if="this.divId===4" class="mt-5">
-        <div v-for="(article, index) in searchResult">
-          <div id="article-view" class="m-4 p-4" v-if="article.isPublished">
-            <h1>{{article.title}}</h1>
-            <br>
-            <div v-html="article.content"></div>
-            <div id="article-tag" class="d-flex flex-row">
-              <b-badge variant="dark" class="mr-2" v-for="tag in article.tags">{{tag}}</b-badge>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="myarticles" v-else-if="this.divId===2" class="mt-5 ml-3 mr-4">
-        <div role="tablist" v-for="(article, index) in articles">
-          <b-card no-body class="mb-1" v-if=article.isPublished>
-            <b-card-header header-tag="header" class="p-1 d-flex flex-row justify-content-between align-items-center" role="tab">
-              <h5>{{article.title}}</h5>
-              <div class="d-flex flex-row">
-                <b-button class="mr-2" v-b-toggle="'accordion-'+index"><i class="fa fa-eye"></i></b-button>
-                <b-button class="mr-2" @click="setEditId(article._id,article)" v-b-modal.mymodal><i class="fa fa-edit"></i></b-button>
-                <b-button class="mr-2" v-b-modal.modal-delete-confirmation @click="setDeleteId(article._id)"><i class="fa fa-trash-alt"></i></b-button>
-              </div>
-            </b-card-header>
-            <b-collapse v-bind:id="'accordion-'+index" accordion="my-accordion" role="tabpanel">
-              <b-card-body>
-                <h1>{{article.title}}</h1>
-                <br>
-                <div v-html="article.content"></div>
-                <div id="article-tag" class="d-flex flex-row">
-                  <b-badge variant="dark" class="mr-2" v-for="tag in article.tags">{{tag}}</b-badge>
-                </div>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
-        </div>
-      </div>
-      <div id="draft" v-else-if="this.divId===3" class="mt-5 ml-3 mr-4">
-        <div role="tablist" v-for="(article, index) in articles">
-          <b-card no-body class="mb-1" v-if=!article.isPublished>
-            <b-card-header header-tag="header" class="p-1 d-flex flex-row justify-content-between align-items-center" role="tab">
-              <h5>{{article.title}}</h5>
-              <div class="d-flex flex-row">
-                <b-button class="mr-2" v-b-toggle="'accordion-'+index"><i class="fa fa-eye"></i></b-button>
-                <b-button @click="setEditId(article._id,article)" v-b-modal.mymodal class="mr-2"><i class="fa fa-edit"></i></b-button>
-                <b-button v-b-modal.modal-delete-confirmation @click="setDeleteId(article._id)" class="mr-2"><i class="fa fa-trash-alt"></i></b-button>
-              </div>
-            </b-card-header>
-            <b-collapse v-bind:id="'accordion-'+index" accordion="my-accordion" role="tabpanel">
-              <b-card-body>
-                <h1>{{article.title}}</h1>
-                <br>
-                <div v-html="article.content"></div>
-                <div id="article-tag" class="d-flex flex-row">
-                  <b-badge variant="dark" class="mr-2" v-for="tag in article.tags">{{tag}}</b-badge>
-                </div>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
-        </div>
-      </div>
-
-      <!-- Modal Component -->
-      <b-modal ref="my-modal" size="lg" id="mymodal" title="Article" hide-footer
-        ok-title="Publish" cancel-title="Save as Draft">
-            <p class="text-red">{{modalError}}</p>
-            <small>Title:</small>
-            <input type="text" class="w-100" v-model="modalTitle">
-            <br>
-            <small>Article:</small>
-            <wysiwyg v-model="modalText"></wysiwyg>
-            <small>Tags: (seperate tags with comma)</small>
-            <input type="text" class="w-100" v-model="modalTags">
-            <div class="d-flex flex-row justify-content-end mt-3">
-              <b-button  class="mr-2 " @click="closeModal">Cancel</b-button>
-              <b-button variant="success" class="mr-2 " @click="draftBtnModal(modalEditedid)">Save As Draft</b-button>
-              <b-button variant="primary" class="mr-2"  @click="publishBtnModal(modalEditedid)">Publish</b-button>
-            </div>
-      </b-modal>
-      <!--Modal Confirmaton-->
-      <div>
-        <!-- Modal Component -->
-        <b-modal id="modal-delete-confirmation" title="BootstrapVue"  @ok="deleteArticle">
-          <p class="my-4">Are you sure want to delete this item?</p>
-          <p>{{modalDeleteId}}</p>
-        </b-modal>
-      </div>
+    <div id="logged-out-content" v-if="!isLogin">
+        <div class="h-100 row justify-content-center align-items-center" >
+          <login-card v-if="wantLogin"
+            @change-auth="setWantLogin"
+            @auth-success="authSuccess">
+          </login-card>
+          <register-card v-else
+            @change-auth="setWantLogin"
+            @auth-success="authSuccess">   
+          </register-card>
+         </div>
     </div>
-
+    <div id="logged-on-content" v-if="isLogin">
+        <aside id="sidebar" v-bind:style="{width: sidebar.width}" class="d-flex flex-column align-items-start">
+            <side-bar @set-view-id="setViewId"
+              :username="username"
+              :div-id="Number(viewId)"
+              :img-src="imgSrc"
+              :published-article="publishedArticleLength">
+            </side-bar>
+          </aside>
+          <div id="content" v-bind:style="{'margin-left': contentMargin, padding:'5px'}">
+            <top-navbar
+              @search-success="setViewedArticles"
+              @invoke-logout="setLogout"
+              @show-all="getArticle">
+            </top-navbar>
+            <div id="articles" v-if="viewId==VIEW_ID.ALL_ARTICLE" class="mt-5">
+              <article-list
+                :articles="viewedArticles"
+                :type="'page'">
+              </article-list>
+            </div>
+            <div id="myarticles" v-else-if="viewId==VIEW_ID.MY_ARTICLE" class="mt-5 ml-3 mr-4">
+              <article-list
+                :articles="myArticles"
+                :type="'data'"
+                :need-published="true"
+                @on-delete-success="deleteArticle"
+                @on-edit-article="setEditArticle">
+              </article-list>
+            </div>
+            <div id="draft" v-else-if="viewId==VIEW_ID.DRAFT" class="mt-5 ml-3 mr-4">
+              <article-list
+                :articles="myArticles"
+                :type="'data'"
+                :need-published="false"
+                @on-delete-success="deleteArticle"
+                @on-edit-article="setEditArticle">
+              </article-list>
+            </div>
+      
+            <!-- Modal Component -->
+            
+              <article-modal
+                :article="editArticle"
+                @create-success="createArticle"
+                @update-success="updateArticle">
+              </article-modal>
+              <!-- <p class="text-red">{{modalError}}</p>
+              <small>Title:</small>
+              <input type="text" class="w-100" v-model="modalTitle">
+              <br>
+              <small>Article:</small>
+              <wysiwyg v-model="modalText"></wysiwyg>
+              <small>Tags: (seperate tags with comma)</small>
+              <input type="text" class="w-100" v-model="modalTags">
+              <div class="d-flex flex-row justify-content-end mt-3">
+                <b-button class="mr-2 " @click="closeModal">Cancel</b-button>
+                <b-button variant="success" class="mr-2 " @click="draftBtnModal(modalEditedid)">Save As Draft</b-button>
+                <b-button variant="primary" class="mr-2" @click="publishBtnModal(modalEditedid)">Publish</b-button>
+              </div> -->
+            
+          </div>
+      
+    </div>
+    
 
     <!-- <div id="content" class="p-3">
       <b-nav v-bind:style="{margin-left: sidebar.width}" class="navbar navbar-expand-lg navbar-light bg-light">
@@ -199,13 +148,30 @@
     </div> -->
 
   </div>
-
+  
   <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+  <!--Components-->
+  <script src="./js/vueWysiwyg.js"></script>
+  <script src="js/components/register-card.js"></script>
+  <script src="js/components/login-card.js"></script>
+  <script src="js/components/article-modal.js"></script>
+  <script src="js/components/article-data.js"></script>
+  <script src="js/components/article-list.js"></script>
+  <script src="js/components/article-page.js"></script>
+  <script src="js/components/side-nav-button.js"></script>
+  <script src="js/components/side-nav-button.js"></script>
+  <script src="js/components/top-navbar.js"></script>
+  <script src="js/components/side-bar.js"></script>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="./js/vueWysiwyg.js"></script>
+  <script src="./js/helper/constantvalue.js"></script>
+  <script src="./js/helper/errorHandler.js"></script>
+  <script src="./js/helper/gsign.js"></script>
+ 
   <script src="./js/main.js"></script>
 </body>
 

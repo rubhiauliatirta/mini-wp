@@ -3,24 +3,32 @@ const {Article} = require("../models");
 class ArticleController{
 
     static findAll(req,res){
-        let query = {};
+        console.log(req.body.userIdFromAuth)
+        let query = {
+            userId: req.body.userIdFromAuth
+        };
+       
         if(req.query.title){
+            console.log("masuk")
             query.title = {
                 '$regex' : req.query.title, 
                 '$options' : 'i' 
             }
+        }else if(req.query.tag){
+            console.log("sd")
+            query.tags = req.query.tag
         }
+        console.log("querq")
+        
+        console.log(query)
 
-        Article.find(query)
-        .then(results=>{console.log(results)
+        Article.find(query).populate("User")
+        .then(results=>{
+            console.log(results)
             res.status(200).json(results)
         })
         .catch(err=>{
-            console.log(err);
-            res.status(500).json({
-                message: "Failed while getting data",
-                error: err.stack
-            })
+            next(err)
         })
     }
     static create(req,res){
@@ -28,18 +36,17 @@ class ArticleController{
             title : req.body.title,
             content : req.body.content,
             tags: req.body.tags,
-            isPublished: req.body.isPublished
+            featured_image: req.file ? req.file.cloudStoragePublicUrl : null,
+            isPublished: req.body.isPublished,
+            userId: req.params.userIdFromAuth
         }
+
         Article.create(data)
         .then(result=>{
             res.status(201).json(result)
         })
         .catch(err=>{
-            console.log(err);
-            res.status(500).json({
-                message: "Failed while creating data",
-                error: err.stack
-            })
+            next(err)
         })
     }
     static delete(req,res){
@@ -52,10 +59,7 @@ class ArticleController{
             })
         })
         .catch(err=>{
-            console.log(err.stack)
-            res.status(500).json({
-                message: "error while deleting data"
-            })
+            next(err)
         })
     }
     static update(req,res){
@@ -64,16 +68,15 @@ class ArticleController{
         req.body.title && (updateVal.title = req.body.title);
         req.body.content && (updateVal.content = req.body.content);
         req.body.tags && (updateVal.tags = req.body.tags);
+        req.body.isPublished && (updateVal.isPublished = req.body.isPublished)
+        req.file && (updateVal.featured_image = req.file.cloudStoragePublicUrl)
 
         Article.findByIdAndUpdate(id,updateVal,{new:true})
         .then(result=>{
             res.status(200).json(result);
         })
         .catch(err=>{
-            console.log(err.stack);
-            res.status(500).json({
-                message : "error while update",
-            })
+            next(err)
         })
     }
 }

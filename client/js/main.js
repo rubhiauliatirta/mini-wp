@@ -1,163 +1,140 @@
 
-// $(document).ready(function(){
-//     $("#content").css({
-//         "margin-left" : `${$("#sidebar").outerWidth(true)}px`
-//     })
-
-// })
-var baseurl = "http://localhost:3000"
-
 const app = new Vue({
     el:"#app",
     created(){
+   
         this.sidebar.width = "300px";
         this.divId = 1;
-        axios.get(baseurl+'/articles', {})
-          .then( (response)=> {
-            console.log(response.data);
-            this.articles = response.data;
-          })
-          .catch(function (error) {
-            // console.log(error);
-          })
-    },
-    components: {
-        wysiwyg: vueWysiwyg.default.component,
+        
+        if(localStorage.token){
+            myaxios.defaults.headers.common['Authorization'] = localStorage.token;
+            this.isLogin = true
+            this.getUser()
+            
+        }else{
+            this.isLogin = false
+        }
     },
     computed:{
         contentMargin(){
             return (Number(this.sidebar.width.split("px")[0])+10)+"px"
         },
         publishedArticleLength(){
-
-            return `Published ${this.articles.filter(x=> x.isPublished === true).length} articles`
+            return `Published ${this.myArticles.filter(x=> x.isPublished === true).length} articles`
         },
     },
     watch:{
-        searchQuery: function(q){
-            
-            this.divId = 4;
-            axios.get(baseurl+'/articles?title_like='+q, {})
-            .then( (response)=> {
-              // console.log(response);
-              console.log(response.data)
-              this.searchResult = response.data;
-            })
-            .catch(function (error) {
-              // console.log(error);
-              console.log(error)
-         
-            })
+        isLogin: function(val){
+            if(val){
+                this.getArticle();
+            }else{
+               this.logout();
+            }
         }
     },
     data:{
-        articles:[],
-        searchResult:[],
-        searchQuery:"",
+        wantLogin :true,
+        username:"",
+        imgSrc:"",
+        isLogin:"",
+        editArticle:null,
+        myArticles:[],
+        viewedArticles:[],
         sidebar:{
             width: "",
         },
-        divId: -1,
-        modalTitle:"",
-        modalText:"",
-        modalTags:"",
-        modalError:"",
-        modalDeleteId:false,
-        modalEditedid:false,
-        _articleData:{}
+        viewId: VIEW_ID.ALL_ARTICLE,
     },
     methods:{
-        _modalValidation(title,text){
-            if(title.trim()===""){
-                this.modalError = "Title is empty"
-                return false
-            }
-            if(text.trim()===""){
-                this.modalError = "Content is empty"
-                return false
-            }
-        },
-        _updateArticle(id, article){
-            axios.patch(baseurl+'/articles/'+id, article)
-            .then( (response)=> {
-                // console.log(response);
-                let clientArticle =  this.articles.find(art => art._id === id)
-
-                //update article data in client
-                for(let key in article){
-                    clientArticle[key] = article[key];
-                }
-                this.closeModal();
+        getUser(){
+          
+            myaxios({
+               method:'get',
+               url: "/users/user",
             })
-            .catch(function (error) {
-                console.log(error.response)
-              this.modalError = error.message
+            .then(({data})=>{
+               this.username = data.name;
+               this.imgSrc = data.imageUrl;
+            })
+            .catch(error=>{
+               
+                handleAxiosError(error)
             })
         },
-        _createArticle(article){
-            console.log("masuk sini")
+        getArticle(){
+            myaxios({
+               method:'GET',
+               url: "/articles",
+            })
+            .then(({data})=>{
+                this.myArticles = data;
+                this.viewedArticles = data
+            })
+            .catch(error=>{
+                handleAxiosError(error)
+            })
+        },
+        updateArticle(article){
+             //tadinya mau di update dari sisi client tapi rada susah jadi sementara di get ulang aja
+             this.getArticle()
+        },
+        createArticle(article){
+            this.myArticles.push(article);
+        },
+        deleteArticle(id){ 
+            let index = this.myArticles.findIndex(x=>x._id === id)
+            this.myArticles.splice(index,1)
+        },
+        setEditArticle(article){
+      
+            if(article){
+                this.editArticle = article
+            }else{
+                this.editArticle = null;
+            }
+           
+        },
+        authSuccess(data){
+            localStorage.token = data.token;
+            localStorage.username = data.username;
+            localStorage.imgSrc = data.imgSrc;
+            this.username = data.username;
+            this.imgSrc = data.imgSrc;
+            myaxios.defaults.headers.common['Authorization'] = data.token;
+            this.isLogin=true;
+            this.setViewId(VIEW_ID)
+        },
+        setLogout(){
+            myaxios({
+               method:'POST',
+               url: "/users/logout",
+            })
+            .then(({data})=>{
+               if(data.accountType === "google"){
+                    googleSignOut()
+               }else{
+                    this.isLogin = false
+               }
+            })
+            .catch(error=>{
+                handleAxiosError(error)
+            })
             
-            axios.post(baseurl+'/articles', article)
-            .then( (response)=> {
-
-              this.articles.push(response.data) 
-              this.closeModal();
-            })
-            .catch(function (error) {           
-                console.log(error)
-                //console.log(error.response.data.message);
-            })
         },
-        _getArticleData(isPublish){
-            return {
-                title: this.modalTitle,
-                content: this.modalText,
-                tags: this.modalTags.split(","),
-                isPublished: isPublish
-            }
+        logout(){
+            localStorage.removeItem("token")
+            localStorage.removeItem("username")
+            localStorage.removeItem("imgSrc")
+            myaxios.defaults.headers.common['Authorization'] = ""
         },
-        closeModal(){
-            this.modalTitle="";
-            this.modalText="";
-            this.modalTags="";
-            this.modalEditedid=false;
-            this.$refs['my-modal'].hide()
+        setViewId(id){
+            this.viewId = Number(id);
         },
-        draftBtnModal(id){
-            if(id){
-                this._updateArticle(id,this._getArticleData(false))
-            }else{
-                this._createArticle(this._getArticleData(false));
-            }
+        setViewedArticles(articles){
+            this.viewedArticles = articles
         },
-        publishBtnModal(id){
-
-            if(id){
-                this._updateArticle(id,this._getArticleData(true))
-            }else{
-                this._createArticle(this._getArticleData(true));
-            }
-        
-        },
-        deleteArticle(){
-            event.preventDefault()
-            axios.delete(baseurl+'/articles/'+this.modalDeleteId)
-            .then( (response)=> {
-                this.articles = this.articles.filter(x=>x._id !== this.modalDeleteId)
-                this.modalDeleteId=false;
-            })
-            .catch(function (error) {
-              this.modalError = error.data.message
-            })
-        },
-        setDeleteId(id){
-            this.modalDeleteId = id;
-        },
-        setEditId(id,article){
-            this.modalTitle = article.title;
-            this.modalText = article.content;
-            this.modalTags = article.tags.join(",")
-            this.modalEditedid = id;
+        setWantLogin(){
+            this.wantLogin = !this.wantLogin
         }
     }
 })

@@ -23,6 +23,9 @@ body{
     margin: 10px;
     background-color: antiquewhite;
 }
+#logged-out-content{
+    height: 100vh;
+}
 
 #sidebar{
     /* position: absolute; */
@@ -52,6 +55,12 @@ body{
     font-weight: bold;
     color: #850000;
 }
+#modal-image{
+    width: 30%;
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
 /* #mynavbar{
     position: absolute;
 } */
@@ -62,7 +71,7 @@ body{
     height: 400px;
 }
 
-#article-view{
+.article-view{
     background-color: whitesmoke
 }
 
