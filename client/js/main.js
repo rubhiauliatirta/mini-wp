@@ -7,13 +7,15 @@
 //   const router = new VueRouter({
 //     routes: [
 //       // dynamic segments start with a colon
-//       { path: '/user/:username/post/:slug', component: User }
+//     //   { path: '/user/:username/post/:slug', component: User }
+//     { path: '/user/:username', component: User }
 //     ]
 //   })
   
+//   Vue.use(router)
 const app = new Vue({
     el:"#app",
-
+    router,
     created(){
    
         this.sidebar.width = "300px";
