@@ -15,7 +15,7 @@
 //   Vue.use(router)
 const app = new Vue({
     el:"#app",
-    router,
+    // router,
     created(){
    
         this.sidebar.width = "300px";

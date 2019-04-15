@@ -67,12 +67,6 @@ Vue.component('article-modal', {
         },
         getArticleData(isPublish){
             let formData = new FormData();
-            console.log(this.modalTitle)
-            console.log(this.modalText);
-            console.log(this.modalTags.split(","));
-            console.log( isPublish);
-            console.log(this.modalImage);
-
             formData.append("title", this.modalTitle);
             formData.append("content", this.modalText);
             formData.append("tags", this.modalTags.split(","));

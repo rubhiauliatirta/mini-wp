@@ -18,14 +18,15 @@ class ArticleController{
             console.log("sd")
             query.tags = req.query.tag
         }
-        console.log("querq")
-        
+   
         console.log(query)
 
         Article.find(query).populate("userId")
         .then(results=>{
-            console.log(results)
+ 
+            console.log(JSON.stringify(results, null, 2))
             res.status(200).json(results)
+            
         })
         .catch(err=>{
             next(err)
@@ -35,14 +36,16 @@ class ArticleController{
         let data = {
             title : req.body.title,
             content : req.body.content,
-            tags: req.body.tags,
+            tags: req.body.tags.split(","),
             featured_image: req.file ? req.file.cloudStoragePublicUrl : null,
             isPublished: req.body.isPublished,
             userId: req.params.userIdFromAuth
         }
+        console.log(JSON.stringify(data, null, 2))
 
         Article.create(data)
         .then(result=>{
+        
             res.status(201).json(result)
         })
         .catch(err=>{
@@ -67,12 +70,13 @@ class ArticleController{
         let id = req.params.articleId;
         req.body.title && (updateVal.title = req.body.title);
         req.body.content && (updateVal.content = req.body.content);
-        req.body.tags && (updateVal.tags = req.body.tags);
+        req.body.tags && (updateVal.tags = req.body.tags.split(","));
         req.body.isPublished && (updateVal.isPublished = req.body.isPublished)
         req.file && (updateVal.featured_image = req.file.cloudStoragePublicUrl)
 
         Article.findByIdAndUpdate(id,updateVal,{new:true})
         .then(result=>{
+            console.log(JSON.stringify(result, null, 2))
             res.status(200).json(result);
         })
         .catch(err=>{

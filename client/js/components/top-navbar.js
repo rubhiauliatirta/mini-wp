@@ -43,7 +43,7 @@ Vue.component('top-navbar', {
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto align-items-end m-1">
                     <b-nav-form>
-                        <b-form-input size="sm" class="mr-sm-2" v-model="searchQuery" placeholder="Search"></b-form-input>
+                        <b-form-input size="sm" class="mr-sm-2" v-model="searchQuery" placeholder="Search for 'title' or '#tag'"></b-form-input>
                         <button class="m-2 btn btn-primary" size="small" @click.prevent="$emit('invoke-logout')">Logout</button>
                     </b-nav-form>
                 </b-navbar-nav>           
